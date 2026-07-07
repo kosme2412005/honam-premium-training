@@ -4,6 +4,13 @@
   "use strict";
   document.documentElement.classList.add("js");
 
+  /* 진입 시 항상 최상단(히어로)부터 — 브라우저 스크롤 복원/잔여 앵커 차단 */
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash) {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+  window.scrollTo(0, 0);
+
   var FORM_URL = document.body.getAttribute("data-form-url");
 
   /* ── 모바일 네비 ── */

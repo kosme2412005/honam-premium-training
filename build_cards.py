@@ -129,6 +129,9 @@ def card_html(c):
 def main():
     courses = parse_courses()
     assert len(courses) == 45, f"과정 수 불일치: {len(courses)}개 (기대 45개)"
+    # 노출 순서: 광주 → 전주 → 제주, 지역 내에서는 연번순
+    city_order = {"광주": 0, "전주": 1, "제주": 2}
+    courses.sort(key=lambda c: (city_order[c["city"]], c["no"]))
     ai = sum(1 for c in courses if "AI" in c["ctype"])
     cards = "\n".join(card_html(c) for c in courses)
     block = f"<!-- COURSES:START (build_cards.py 자동 생성 — 직접 수정 가능하나 재실행 시 덮어씀) -->\n{cards}\n      <!-- COURSES:END -->"

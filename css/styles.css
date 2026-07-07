@@ -117,6 +117,12 @@ em { font-style: normal; }
 }
 .hero-badge .star { color: var(--gold); }
 .hero-badge b { color: #f3e3bb; font-weight: 700; }
+.badge-l1, .badge-l2 { white-space: nowrap; }
+/* 모바일: 뱃지 2줄 스택 — 1줄 사업명, 2줄 운영기관 각각 한 줄 정렬 */
+@media (max-width: 767px) {
+  .hero-badge { flex-direction: column; gap: 3px; text-align: center; border-radius: 18px; padding: 10px 20px; }
+  .badge-dot { display: none; }
+}
 .hero-title { font-size: clamp(38px, 7.2vw, 68px); font-weight: 900; line-height: 1.16; letter-spacing: -.03em; margin-bottom: 22px; }
 .hero-title em { color: var(--gold); }
 .hero-title strong { font-weight: 900; }
